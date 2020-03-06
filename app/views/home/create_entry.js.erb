@@ -1,0 +1,6 @@
+<% if @entry.save %>
+  var entries = <% @contestants %>
+  $('#notification').append(`<p>Your email was saved successfully! You are the ${entries} contestant!</p>`)
+<% else %>
+  $('#notification').append("<p>This email has already been used. Please try another email.</p>")
+<% end %>

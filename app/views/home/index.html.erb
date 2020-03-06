@@ -1,0 +1,17 @@
+<h1>Welcome to the raffle application!</h1>
+<h3>Please select one of our raffles.</h3>
+
+<% if @raffles.present? %>
+  <%= form_tag "/create_entry" do |f| %>
+  <%= select_tag :raffle_id, options_from_collection_for_select(@raffles, "id", "name") %>
+  <br>
+  <br>
+  <%= text_field_tag :email %>
+
+  <%= submit_tag :submit %>
+  <% end %>
+<% end %>
+
+<br>
+<br>
+<div id='notification'></div>
