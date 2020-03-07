@@ -9,10 +9,10 @@ class HomeController < ApplicationController
     @raffle      = Raffle.find(params[:raffle_id])
     @contestants = @raffle.entries.count
 
-    odds = Fortune::Odds.new(win: 1, lose: @contestants)
+    percentage = Fortune::P.new(1, @contestants).to_percent
 
     if @entry.save
-      flash[:success] = "Your were successfully entered! You are contestant number #{@contestants}! Your odds of winning are #{odds.p} percent!"
+      flash[:success] = "Your were successfully entered! You are contestant number #{@contestants}! Your odds of winning are #{percentage} percent!"
       redirect_back fallback_location: "/"
     else
       flash[:alert] = "This email has already been used please try a different email"
